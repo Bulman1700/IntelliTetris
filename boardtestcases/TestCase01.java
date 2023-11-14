@@ -12,31 +12,22 @@ public class TestCase01
 {
     public static void main(String [] args)
     {
-        Test.enableDebug();
+        Test.disableDebug();
         Test.setWidth(16);
         Test.setHeight(35);
 
         boolean success = true;
+        Board b = null;
 
         if (Test.debug())
-            System.out.println("Attempting to create board...");
-
-        Board b = new Board(Test.getWidth(), Test.getHeight());
+          Test.printDebugMsg("Attempting to create board...", "", success);
 
         // Testing for board creation.
-        success &= (b != null);
+        success &= (b = new Board(Test.getWidth(), Test.getHeight())) != null;
 
         if (Test.debug())
         {
-            if (success)
-            {
-                System.out.println("Board creation successful.");
-            }
-            else
-            {
-                System.out.println("Error: could not create board");
-                System.exit(0);
-            }
+          Test.printDebugMsg("Board creation successful.", "Error: could not create board", success);
         }
 
         // Testing for correct board dimensions.
@@ -44,23 +35,13 @@ public class TestCase01
 
         if (Test.debug())
         {
-            if (success)
-            {
-                System.out.println(" Height: " + b.getHeight() + "\n Width: " + b.getWidth());
-            }
-            else
-            {
-                System.out.println("Error: incorrect board dimensions.");
-                System.exit(0);
-            }
+          Test.printDebugMsg(" Height: " + b.getHeight() + "\n Width: " + b.getWidth(), "Error: incorrect board dimensions.", success);
+          Test.printBoard(b);
         }
 
-        if (Test.debug())
-        {
-           if (success)
-           {
-            Test.printBoard(b);
-           }
-        }
+        if (success)
+          System.out.println("passed test case");
+        else
+          System.out.println("fail");
     }
 }
