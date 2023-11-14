@@ -15,18 +15,18 @@ public class TestCase01
         Test.enableDebug();
         Test.setWidth(16);
         Test.setHeight(35);
-        
+
         boolean success = true;
 
-        if (Test.debugStatus())
+        if (Test.debug())
             System.out.println("Attempting to create board...");
-        
+
         Board b = new Board(Test.getWidth(), Test.getHeight());
 
         // Testing for board creation.
         success &= (b != null);
-        
-        if (Test.debugStatus())
+
+        if (Test.debug())
         {
             if (success)
             {
@@ -41,8 +41,8 @@ public class TestCase01
 
         // Testing for correct board dimensions.
         success &= (b.getWidth() == Test.getWidth() && (b.getHeight() == Test.getHeight()));
-        
-        if (Test.debugStatus())
+
+        if (Test.debug())
         {
             if (success)
             {
@@ -55,7 +55,7 @@ public class TestCase01
             }
         }
 
-        if (Test.debugStatus())
+        if (Test.debug())
         {
            if (success)
            {
