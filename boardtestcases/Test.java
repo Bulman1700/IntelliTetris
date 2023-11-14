@@ -21,10 +21,10 @@ public class Test
   public static void disableDebug() { Test.debug = false; }
 
   public static void setWidth(int width) { Test.width = width; };
-  public static void setHeight(int height) { Test.height = height; }; 
+  public static void setHeight(int height) { Test.height = height; };
 
   // Getters.
-  public static boolean debugStatus() { return Test.debug; }
+  public static boolean debug() { return Test.debug; }
   public static int getWidth() { return Test.width; }
   public static int getHeight() { return Test.height; }
 
@@ -46,7 +46,7 @@ public class Test
 
     System.out.println();
   }
-  
+
   private Test()
   {
   }
