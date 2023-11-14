@@ -1,11 +1,12 @@
-// Johnathon Bulman
+// J.B.
+
 // Piece.java
 // ==========
+// Piece class that takes care of all piece related activites.
 
 package tetris;
 
 import java.util.*;
-
 
 public class Piece
 {
@@ -172,8 +173,5 @@ public class Piece
 
         for (TPoint i : piece)
             System.out.println(i);
-        
-        System.out.println();
     }
-
 }
