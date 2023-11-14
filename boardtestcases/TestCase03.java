@@ -14,15 +14,15 @@ public class TestCase03
 
         b.place(p[TetrisConstants.SQUARE], 4, 0);
         b.commit();
-        // b.printBoard();
+        // Test.printBoard(b);
         b.place(p[TetrisConstants.L1].fastRotation(), 1, 0);
         b.commit();
-        // b.printBoard();
+        // Test.printBoard(b);
         b.place(p[TetrisConstants.S2].fastRotation(), 0, 0);
         b.commit();
-        b.printBoard();
+        Test.printBoard(b);
         b.clearRows();
-        // b.printBoard();
+        // Test.printBoard(b);
 
     }   
 }
