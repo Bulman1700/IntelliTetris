@@ -187,31 +187,26 @@ public class Board
   
       committed = false;
       int numCleared = 0;
+      int buffer = maxHeight-1;
       
       // Bubble all the filled rows to the top of the grid.
       // Once all the filled rows are at the top, clear them out one by one
       // until there are no filled rows left.
-      for (int i = 0, j = 0; i <= this.maxHeight; i++, j = i)
+      for (int i = 0; i <= buffer; i++)
       {
         // Storing first filled row position with 'i'.
         if (isFilled(width[i]))
         {
-          numCleared++; // Count filled row
-  
-          // Keep going until you reach a row that isnt filled.
-          while (isFilled(width[++j]))
-            ;
-  
-          // Swap the rows. 'j' is reset to 'i' at each iteration of the loop.
-          swap(i , j);  
-        }
-  
-        // At this point, all filled rows are at the top of the grid.
-        // Clear each filled row one by one until there are none left.
-        if (j >= maxHeight)
-             while (isFilled(width[j]))
-                clear(j--);
-             
+            numCleared++; // Count filled row
+
+            swap(i , buffer);  
+          
+            while (isFilled(width[buffer]))
+                clear(buffer--);
+            
+            if (i >= buffer)
+                break;
+        }     
       }
 
 
@@ -319,24 +314,5 @@ public class Board
         System.arraycopy(grid[i], 0, backupGrid[i], 0, grid[i].length);
 
         backupMaxHeight = getMaxHeight();
-    }
-
-    // Simple print board method. Move this to test cases.
-    public void printBoard()
-    {
-        for (int i = width.length - 1; i >= 0; i--)
-        {
-            // System.out.printf("row %-2d, width: %-2d", i, width[i]);
-            for (int j = 0; j < height.length; j++)
-                System.out.printf("%s%c", this.grid[j][i] ? "o " : ". ", j == height.length - 1 ? '\n' : ' ');
-        }
-        
-        // System.out.printf("%-7sHeight: ", "");
-        // for (int i = 0; i < height.length; i++)
-        //     System.out.printf("%3d", getColumnHeight(i));
-
-        // System.out.println("\nMax Height: " + getMaxHeight());
-    
-        System.out.println("\n");
     }
 }
