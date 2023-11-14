@@ -28,12 +28,22 @@ public class Test
   public static int getWidth() { return Test.width; }
   public static int getHeight() { return Test.height; }
 
-  public static void testSuccess(boolean success)
+  // Standard Err Msg format.
+  public static void printDebugMsg(String s1, String s2, boolean success)
   {
     if (!success)
     {
-      System.out.println("Fail Whale :(");
+      System.out.println(s2);
       System.exit(0);
+    }
+    else if (s2 == "")
+    {
+      System.out.println(s1);
+      return;
+    }
+    else
+    {
+      System.out.println(s1);
     }
   }
 
