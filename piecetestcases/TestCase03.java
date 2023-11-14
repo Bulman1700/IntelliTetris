@@ -1,14 +1,18 @@
+// J.B.
+
+// TestCase03.java
+// ===============
+// Tests that the dimensions of each piece are correct.
+
 package piecetestcases;
 
 import tetris.*;
 
-// Tests that the dimensions of each piece are correct.
 public class TestCase03
 {
     public static void main(String [] args)
     {
-        Test.disableDebug();
-        Test.setRotationCnt(100);
+        Test.enableDebug();
         Piece [] pieces = Piece.getPieces(); // Building Tetris Pieces.
         boolean success = true;
 
@@ -17,5 +21,7 @@ public class TestCase03
         
         if (success)
             System.out.println("Hooray!");
+        else
+            System.out.println("fail whale...");
     }
 }

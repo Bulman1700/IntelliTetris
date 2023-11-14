@@ -1,10 +1,15 @@
+// J.B.
+
+// TestCase02.java
+// ===============
+// Tests Piece.fastRotation() of each peice and verifies that they match the hard coded values in TetrisConstants.java.
+// This will inherently test the equals() method in Piece.java as well. 
+
+// A beast of a test case.
+
 package piecetestcases;
 
 import tetris.*;
-
-
-// Tests the rotation of each peice and verifies that they match the hard coded values in TetrisConstants.java.
-// This will inherently test the equals() method in Piece.java as well.
 
 public class TestCase02
 {
@@ -17,8 +22,8 @@ public class TestCase02
 
   public static void main(String [] args)
   {
-    Test.disableDebug();
-    Test.setRotationCnt(100);
+    Test.enableDebug();
+    Test.setRotationCnt(5);
     Piece [] pieces = Piece.getPieces(); // Building Tetris Pieces.
     boolean success = true;
 
@@ -26,56 +31,83 @@ public class TestCase02
     for (int i = 0; i < TetrisConstants.gamePieces.length; i++)
     {
       Piece testPiece = pieces[i];
+      
       if (Test.checkDebug())
       {
         System.out.println("Piece[" + i + "]");
         Test.printPiece(testPiece);
+        System.out.println();
       }
 
+      // Loop through 'n' rotations of each peice and check which ones match the original piece.
       for (int j = 0; j < Test.getRotationCnt(); j++)
       {
-        testPiece = testPiece.fastRotation();
+        testPiece = testPiece.fastRotation(); // testPiece's 'next' reference.
+        
+        if (Test.checkDebug())
+        {
+          System.out.println("Rotating piece counter-clockwise...");
+          Test.printPiece(testPiece);
+        }
 
         // Conditions where rotated piece matches original piece.
-        if ((i == 0 || i == 3 || i == 4) && (j % Test.getRotationCnt()) % 4 == 1)
+        if ((i == 0 || i == 3 || i == 4) && ((j % Test.getRotationCnt()) % 4 == 1))
         {
+          // Check if rotated piece matches piece[i]
           success &= (Test.testEquality(TetrisConstants.gamePieces[i], testPiece) == true);
           
           if (Test.checkDebug())
           {
             if (!success)
+            {
               errMsg(i, j);
+            }
             else
-              Test.printPiece(testPiece);
+            {
+              System.out.println("matches piece[" + i + "]");
+            }
           }
         }
 
+        // Conditions where rotated piece matches original piece.
         else if (i == 5)
         {
+          // Check if rotated piece matches piece[i]
           success &= (Test.testEquality(TetrisConstants.gamePieces[i], testPiece) == true);
           
           if (Test.checkDebug())
           {
             if (!success)
+            {
               errMsg(i, j);
+            }
             else
-              Test.printPiece(testPiece);
+            {
+              System.out.println("matches piece[" + i + "]");
+            }
           }
         }
 
+        // Conditions where rotated piece matches original piece.
         else if ((j % Test.getRotationCnt()) % 4 == 3)
         {
+          // Check if rotated piece matches piece[i]
           success &= (Test.testEquality(TetrisConstants.gamePieces[i], testPiece) == true);
           
           if (Test.checkDebug())
           {
             if (!success)
+            {
               errMsg(i, j);
+            }
             else
-              Test.printPiece(testPiece);
+            {
+              System.out.println("matches piece[" + i + "]");
+            }
           }
         }
 
+        // All other conditions where rotated piece does not match original piece.
         else
         {
           success &= (Test.testEquality(TetrisConstants.gamePieces[i], testPiece) == false);
@@ -83,15 +115,20 @@ public class TestCase02
           if (Test.checkDebug())
           {
             if (!success)
+            {
               errMsg(i, j);
-            else
-              Test.printPiece(testPiece);
+            }
           }
-        }  
+        }
+        
+        System.out.println();
       }
 
+      // Print status of each original piece[i]
       if (Test.checkDebug())
+      {
         System.out.println("Pass!\n");
+      }
      }
 
     

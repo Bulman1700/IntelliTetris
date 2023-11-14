@@ -1,3 +1,10 @@
+// J.B.
+
+// Test.java
+// =========
+// Holds all getters, setters, and static methods needed for any and all piece testcase files.
+// This class is not intended to be instantiated, nor run on its own.
+
 package piecetestcases;
 
 import tetris.*;
