@@ -8,3 +8,7 @@ To compile and run a test test case (either boardtestcases or piecetestcases), t
         -- java [board/piece]testcases/TestCase0x<br /><br />
 
 replace x with the file you want to run.
+
+## Update
+
+I am in the process of making more in depth test cases, especially for the board class. I want to make sure that the piece and board classes are working perfectly before moving on to the actual game. Hopefully this will be soon.
